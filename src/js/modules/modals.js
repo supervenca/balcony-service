@@ -19,8 +19,8 @@ const modals = () => {
                 });
 
                 modal.style.display = "block";
-                //запрет прокрутки при открытом модальном окне. класс из bootstrap
-                document.body.classList.add('modal-open');
+                //запрет прокрутки при открытом модальном окне.
+                document.body.style.overflow = "hidden";
 
             });
         });
@@ -30,7 +30,7 @@ const modals = () => {
                 item.style.display = 'none';
             });
             modal.style.display = "none";
-            document.body.classList.remove('modal-open');
+            document.body.style.overflow = "";
         });
         //закрытие модального окна нажатием на серую зону (вне модального окна)
         modal.addEventListener('click', (e) => {
@@ -39,7 +39,7 @@ const modals = () => {
                     item.style.display = 'none';
                 });
                 modal.style.display = "none";
-                document.body.classList.remove('modal-open');
+                document.body.style.overflow = "";
             }
         });
     }
@@ -47,8 +47,8 @@ const modals = () => {
     //выскакивание модального окна по таймеру
     function showModalByTime (selector, time) {
         setTimeout(function() {
-            document.querySelector(selector).style.display = 'block';
-            document.body.classList.add('modal-open');
+            document.querySelector(selector).style.display = "block";
+            document.body.style.overflow = "hidden";
         }, time);
     }
 
@@ -57,7 +57,7 @@ const modals = () => {
     bindModal('.popup_calc_btn','.popup_calc','.popup_calc_close');
     bindModal('.popup_calc_button','.popup_calc_profile','.popup_calc_profile_close', false);
     bindModal('.popup_calc_profile_button','.popup_calc_end', '.popup_calc_end_close', false);
-    //showModalByTime('.popup', 60000);
+    showModalByTime('.popup', 60000);
 };
 
 export default modals;
